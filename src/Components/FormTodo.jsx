@@ -11,10 +11,7 @@ function FormTodo({ addTodo }) {
   };
 
   return (
-    <form
-      onSubmit={todoSubmit}
-      className="row row-cols-lg-auto g-3 align-items-center"
-    >
+    <div className="row row-cols-lg-auto g-3 align-items-center">
       <div className="input-group mb-3">
         <input
           type="text"
@@ -29,11 +26,12 @@ function FormTodo({ addTodo }) {
           className="btn btn-outline-success"
           type="button"
           id="button-addon2"
+          onClick={todoSubmit}
         >
           Submit
         </button>
       </div>
-    </form>
+    </div>
   );
 }
 
