@@ -71,7 +71,7 @@ function Dashboard() {
         <meta name="author" content="Arnab Bhakta" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Helmet>
-      <div className="card" style={{ maxWidth: "300px" }}>
+      <div className="card" style={{ maxWidth: "35%" }}>
         <img
           src={userData.data.photoURL ? userData.data.photoURL : kitten}
           className="card-img-top"
