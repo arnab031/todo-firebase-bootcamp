@@ -2,6 +2,9 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import fire from "../Firebase";
 import UserStore from "../Store";
+import { Helmet } from "react-helmet";
+
+import todo from "../assets/img/todo.png";
 
 function Login() {
   const { userData, setUserData } = useContext(UserStore);
@@ -26,9 +29,8 @@ function Login() {
         ...userData,
         auth: true,
         data: userCredentials.user,
-      })
+      });
       localStorage.setItem("userData", JSON.stringify(userCredentials.user));
-
     } catch (error) {
       setLoading(false);
       console.log(error.message);
@@ -37,6 +39,14 @@ function Login() {
 
   return (
     <div className="shadow p-3 mb-5 bg-body rounded">
+      <Helmet>
+        <link rel="icon" type="image/jpg" href={todo} sizes="16x16" />
+        <title>Login - Todo App</title>
+        <meta name="description" content="Free Web tutorials" />
+        <meta name="keywords" content="HTML, CSS, JavaScript" />
+        <meta name="author" content="Arnab Bhakta" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Helmet>
       <div className="card">
         <div className="card-body">
           <div className="mb-3">

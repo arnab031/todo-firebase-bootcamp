@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import UserStore from "../Store";
 import fire from "../Firebase";
+import todo from "../assets/img/todo.png";
 
 function Navbar() {
   const { userData, setUserData } = useContext(UserStore);
@@ -17,6 +18,7 @@ function Navbar() {
           data: null,
         });
         localStorage.removeItem("userData");
+        localStorage.removeItem("userTodos");
       })
       .catch((error) => {
         console.log(error.message);
@@ -29,6 +31,13 @@ function Navbar() {
     >
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
+          <img
+            src={todo}
+            width="30"
+            height="30"
+            class="d-inline-block align-top"
+            alt=""
+          />
           Todo
         </Link>
         <button
@@ -48,11 +57,17 @@ function Navbar() {
         >
           <div className="navbar-nav">
             {userData.auth ? (
-              <Link onClick={signOut} className="nav-link" to="/">
+              <Link
+                onClick={signOut}
+                className="nav-link fa fa-sign-out"
+                to="/"
+              >
+                {" "}
                 Sign Out
               </Link>
             ) : (
-              <Link className="nav-link" to="/login">
+              <Link className="nav-link fa fa-sign-in" to="/login">
+                {" "}
                 Sign In
               </Link>
             )}

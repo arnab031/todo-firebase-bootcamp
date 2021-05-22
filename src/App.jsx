@@ -18,23 +18,27 @@ function App() {
   const [userData, setUserData] = useState({
     auth: false
   });
+  
 
    /*eslint-disable */
   useEffect(() => {
     const userDataInfo = JSON.parse(localStorage.getItem("userData"));
-    //console.log(userDataInfo);
+    
     if (!userDataInfo) {
       setUserData({
         ...userData,
         auth: false,
         data: null,
       });
+      
+      
     } else {
       setUserData({
         ...userData,
         auth: true,
         data: userDataInfo,
       });
+      
     }
     
   },[]);
@@ -58,7 +62,7 @@ function App() {
   // },[]);
   
   return (
-    <UserStore.Provider value={{ userData, setUserData }}>
+    <UserStore.Provider value={{ userData, setUserData}}>
       <Router>
         <Navbar />
         <div className="container my-5">

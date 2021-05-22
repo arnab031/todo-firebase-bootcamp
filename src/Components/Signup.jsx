@@ -1,8 +1,11 @@
-import React,{useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
 import fire from "../Firebase";
 import UserStore from "../Store";
+import { Helmet } from "react-helmet";
+
+import todo from "../assets/img/todo.png";
 
 function Signup() {
   const { userData, setUserData } = useContext(UserStore);
@@ -43,6 +46,14 @@ function Signup() {
   };
   return (
     <div className="shadow-sm mb-5 bg-body rounded">
+      <Helmet>
+        <link rel="icon" type="image/jpg" href={todo} sizes="16x16" />
+        <title>Sign Up - Todo App</title>
+        <meta name="description" content="Free Web tutorials" />
+        <meta name="keywords" content="HTML, CSS, JavaScript" />
+        <meta name="author" content="Arnab Bhakta" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Helmet>
       <div className="card">
         <div className="card-body">
           <div className="mb-3">

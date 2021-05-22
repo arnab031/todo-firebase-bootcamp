@@ -3,6 +3,10 @@ import swal from "sweetalert";
 import UserStore from "../Store";
 import kitten from "../assets/img/kitten.jpg";
 import fire from "../Firebase";
+import Todo from "./Todo";
+import { Helmet } from "react-helmet";
+
+import todo from "../assets/img/todo.png";
 
 function Dashboard() {
   const { userData, setUserData } = useContext(UserStore);
@@ -58,7 +62,15 @@ function Dashboard() {
   };
 
   return (
-    <div className="d-flex justify-content-center">
+    <div className="d-flex justify-content-around">
+       <Helmet>
+        <link rel="icon" type="image/jpg" href={todo} sizes="16x16" />
+        <title>Dashboard - {name}</title>
+        <meta name="description" content="Free Web tutorials" />
+        <meta name="keywords" content="HTML, CSS, JavaScript" />
+        <meta name="author" content="Arnab Bhakta" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </Helmet>
       <div className="card" style={{ maxWidth: "300px" }}>
         <img
           src={userData.data.photoURL ? userData.data.photoURL : kitten}
@@ -162,6 +174,7 @@ function Dashboard() {
           </div>
         </div>
       </div>
+      <Todo/>
     </div>
   );
 }
