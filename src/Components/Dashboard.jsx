@@ -9,7 +9,7 @@ function Dashboard() {
   const [name, setName] = useState(
     userData.data.displayName ? userData.data.displayName : "User"
   );
-
+  //console.log(userData);
   const [files, setFiles] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -32,25 +32,24 @@ function Dashboard() {
             (response.bytesTransferred / response.totalBytes) * 100;
           setProgress(progress);
 
-          response.ref
-            .getDownloadURL()
-            .then((downloadURL) => {
-              user.updateProfile({
+          response.ref.getDownloadURL().then((downloadURL) => {
+            user
+              .updateProfile({
                 displayName: name,
                 photoURL: downloadURL,
               })
-           
-            .then(() => {
-              swal("Profile updated successfully", "", "success");
-              setUploading(false);
-              user = fire.auth().currentUser;
 
-              setUserData({
-                ...userData,
-                data: user,
+              .then(() => {
+                swal("Profile updated successfully", "", "success");
+                setUploading(false);
+                user = fire.auth().currentUser;
+
+                setUserData({
+                  ...userData,
+                  data: user,
+                });
               });
-            });
-          })
+          });
         })
         .catch((error) => swal(error.message, "Try again later", "error"));
     } catch (error) {
@@ -92,7 +91,7 @@ function Dashboard() {
       <div
         className="modal fade"
         id="updateProfileModal"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >

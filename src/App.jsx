@@ -12,32 +12,51 @@ import Dashboard from "./Components/Dashboard";
 import Navbar from "./Components/Navbar";
 import ResetPass from "./Components/ResetPass";
 import Signup from "./Components/Signup";
-import fire from "./Firebase";
+// import fire from "./Firebase";
 
 function App() {
   const [userData, setUserData] = useState({
-    auth: false,
+    auth: false
   });
 
-  /*eslint-disable */
+   /*eslint-disable */
   useEffect(() => {
-    fire.auth().onAuthStateChanged((user) => {
-      if (user) {
-        setUserData({
-          ...userData,
-          auth: true,
-          data: user,
-        });
-      } else {
-        setUserData({
-          ...userData,
-          auth: false,
-          data: null,
-        });
-      }
-    });
+    const userDataInfo = JSON.parse(localStorage.getItem("userData"));
+    //console.log(userDataInfo);
+    if (!userDataInfo) {
+      setUserData({
+        ...userData,
+        auth: false,
+        data: null,
+      });
+    } else {
+      setUserData({
+        ...userData,
+        auth: true,
+        data: userDataInfo,
+      });
+    }
+    
   },[]);
-  /*eslint-enable */
+   /*eslint-enable */
+  
+  //   fire.auth().onAuthStateChanged((user) => {
+  //     if (user) {
+  //       setUserData({
+  //         ...userData,
+  //         auth: true,
+  //         data: user,
+  //       });
+  //     } else {
+  //       setUserData({
+  //         ...userData,
+  //         auth: false,
+  //         data: null,
+  //       });
+  //     }
+  //   });
+  // },[]);
+  
   return (
     <UserStore.Provider value={{ userData, setUserData }}>
       <Router>

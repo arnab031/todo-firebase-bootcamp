@@ -16,6 +16,7 @@ function Navbar() {
           auth: false,
           data: null,
         });
+        localStorage.removeItem("userData");
       })
       .catch((error) => {
         console.log(error.message);
