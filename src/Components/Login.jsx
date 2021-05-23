@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import fire from "../Firebase";
 import UserStore from "../Store";
 import { Helmet } from "react-helmet";
+import swal from "sweetalert";
 
 import todo from "../assets/img/todo.png";
 
@@ -33,6 +34,7 @@ function Login() {
       localStorage.setItem("userData", JSON.stringify(userCredentials.user));
     } catch (error) {
       setLoading(false);
+      swal(error.message, "", "error");
       console.log(error.message);
     }
   };
