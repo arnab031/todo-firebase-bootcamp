@@ -5,6 +5,7 @@ import kitten from "../assets/img/kitten.jpg";
 import fire from "../Firebase";
 import Todo from "./Todo";
 import { Helmet } from "react-helmet";
+import '../css/styles.css'
 
 import todo from "../assets/img/todo.png";
 
@@ -63,7 +64,7 @@ function Dashboard() {
 
   return (
     <div className="d-flex flex-sm-row flex-column justify-content-sm-evenly justify-content-between">
-       <Helmet>
+      <Helmet>
         <link rel="icon" type="image/jpg" href={todo} sizes="16x16" />
         <title>Dashboard - {name}</title>
         <meta name="description" content="Free Web tutorials" />
@@ -71,110 +72,121 @@ function Dashboard() {
         <meta name="author" content="Arnab Bhakta" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Helmet>
-      <div className="align-self-center card" style={{ maxWidth: "35%" , fontSize: "auto"}}>
-        <img
-          src={userData.data.photoURL ? userData.data.photoURL : kitten}
-          className="card-img-top"
-          alt={""}
-        />
-        <div className="card-body text-center">
-          <p className="card-text">
-            Hello, <strong>{name}</strong>
-          </p>
-          <p>
-            {userData.data.email}{" "}
-            {userData.data.emailVerified ? (
-              <span className="badge rounded-pill bg-success">Verified</span>
-            ) : (
-              <span className="badge rounded-pill bg-warning text-dark">
-                Unverified
-              </span>
-            )}
-          </p>
-          <button
-            className="btn btn-outline-dark"
-            data-bs-toggle="modal"
-            data-bs-target="#updateProfileModal"
-          >
-            Update profile
-          </button>
-        </div>
-      </div>
       <div
-        className="modal fade"
-        id="updateProfileModal"
-        tabIndex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
+        className="align-self-center card"
+        style={{ maxWidth:"80vh", fontSize: "2.4vh" }}
       >
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">
-                Update your details here
-              </h5>
+        <div className="row no-gutters">
+          <div className="col-sm-12 col-4">
+            <img
+              src={userData.data.photoURL ? userData.data.photoURL : kitten}
+              className="card-img-top"
+              alt={""}
+            />
+          </div>
+          <div className="col-sm-12 col-8">
+            <div className="card-body text-sm-center">
+              <p className="card-text">
+                Hello, <strong>{name}</strong>
+              </p>
+              <p>
+                {userData.data.email}{" "}
+                {userData.data.emailVerified ? (
+                  <span className="badge rounded-pill bg-success">
+                    Verified
+                  </span>
+                ) : (
+                  <span className="badge rounded-pill bg-warning text-dark">
+                    Unverified
+                  </span>
+                )}
+              </p>
               <button
-                type="button"
-                className="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-            </div>
-            <div className="modal-body">
-              <div className="mb-3">
-                <label htmlFor="exampleInputPassword1" className="form-label">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  value={name}
-                  className="form-control"
-                  id="exampleInputPassword1"
-                  onChange={(e) => setName(e.target.value)}
-                />
-              </div>
-              <div className="mb-3">
-                <label htmlFor="formFile" className="form-label">
-                  Update image
-                </label>
-                <input
-                  accept="image/png, image/jpeg"
-                  className="form-control"
-                  type="file"
-                  id="formFile"
-                  onChange={(e) => setFiles(e.target.files)}
-                />
-              </div>
-              {uploading ? (
-                <div className="progress">
-                  <div
-                    className="progress-bar"
-                    role="progressbar"
-                    style={{ width: `${progress}%` }}
-                    aria-valuenow="25"
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  >
-                    {progress}%
-                  </div>
-                </div>
-              ) : (
-                ""
-              )}
-            </div>
-            <div className="modal-footer">
-              <button
-                onClick={updateProfileModal}
-                type="button"
-                className="btn btn-success"
+                className="btn btn-outline-dark"
+                data-bs-toggle="modal"
+                data-bs-target="#updateProfileModal"
               >
                 Update profile
               </button>
             </div>
           </div>
         </div>
+        <div
+          className="modal fade"
+          id="updateProfileModal"
+          tabIndex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">
+                  Update your details here
+                </h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div className="modal-body">
+                <div className="mb-3">
+                  <label htmlFor="exampleInputPassword1" className="form-label">
+                    Full Name
+                  </label>
+                  <input
+                    type="text"
+                    value={name}
+                    className="form-control"
+                    id="exampleInputPassword1"
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="formFile" className="form-label">
+                    Update image
+                  </label>
+                  <input
+                    accept="image/png, image/jpeg"
+                    className="form-control"
+                    type="file"
+                    id="formFile"
+                    onChange={(e) => setFiles(e.target.files)}
+                  />
+                </div>
+                {uploading ? (
+                  <div className="progress">
+                    <div
+                      className="progress-bar"
+                      role="progressbar"
+                      style={{ width: `${progress}%` }}
+                      aria-valuenow="25"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    >
+                      {progress}%
+                    </div>
+                  </div>
+                ) : (
+                  ""
+                )}
+              </div>
+              <div className="modal-footer">
+                <button
+                  onClick={updateProfileModal}
+                  type="button"
+                  className="btn btn-success btn-sm"
+                >
+                  Update profile
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <Todo/>
+      <Todo />
     </div>
   );
 }
