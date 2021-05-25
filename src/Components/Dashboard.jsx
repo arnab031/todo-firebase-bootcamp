@@ -53,6 +53,7 @@ function Dashboard() {
                   ...userData,
                   data: user,
                 });
+                localStorage.setItem("userData", JSON.stringify(user));
               });
           });
         })
