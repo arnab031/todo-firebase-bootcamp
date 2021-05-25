@@ -18,8 +18,6 @@ function Dashboard() {
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
 
-  
-
   const updateProfileModal = async () => {
     try {
       let user = fire.auth().currentUser;
@@ -64,7 +62,7 @@ function Dashboard() {
   };
 
   return (
-    <div className="d-flex justify-content-around">
+    <div className="d-flex flex-sm-row flex-column justify-content-sm-evenly justify-content-between">
        <Helmet>
         <link rel="icon" type="image/jpg" href={todo} sizes="16x16" />
         <title>Dashboard - {name}</title>
@@ -73,7 +71,7 @@ function Dashboard() {
         <meta name="author" content="Arnab Bhakta" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Helmet>
-      <div className="card" style={{ maxWidth: "35%" , fontSize: "auto"}}>
+      <div className="align-self-center card" style={{ maxWidth: "35%" , fontSize: "auto"}}>
         <img
           src={userData.data.photoURL ? userData.data.photoURL : kitten}
           className="card-img-top"

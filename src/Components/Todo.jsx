@@ -66,26 +66,23 @@ function Todo() {
   };
 
   return (
-    <div className="">
-      <div className="">
-        <div className="mb-4">
-          <h1 className="">Todo List</h1>
-          <FormTodo addTodo={addTodo} />
-          <div>
-            {todos &&
-              todos.map((todo, index) => (
-                <OperationTodo
-                  key={index}
-                  index={index}
-                  todo={todo}
-                  markTodo={markTodo}
-                  removeTodo={removeTodo}
-                />
-              ))}
-          </div>
-        </div>
+    <div className="m-4">
+      <h1>Todo List</h1>
+      <FormTodo addTodo={addTodo} />
+      <div>
+        {todos &&
+          todos.map((todo, index) => (
+            <OperationTodo
+              key={index}
+              index={index}
+              todo={todo}
+              markTodo={markTodo}
+              removeTodo={removeTodo}
+            />
+          ))}
       </div>
     </div>
+      
   );
 }
 
