@@ -18,6 +18,8 @@ function Dashboard() {
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
 
+  
+
   const updateProfileModal = async () => {
     try {
       let user = fire.auth().currentUser;

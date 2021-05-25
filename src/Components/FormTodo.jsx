@@ -15,7 +15,7 @@ function FormTodo({ addTodo }) {
       <div className="input-group mb-3">
         <input
           type="text"
-          class="form-control"
+          className="form-control"
           value={value}
           onChange={(e) => setValue(e.target.value)}
           placeholder="Add your todo here"

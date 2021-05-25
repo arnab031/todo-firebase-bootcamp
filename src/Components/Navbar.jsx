@@ -35,7 +35,7 @@ function Navbar() {
             src={todo}
             width="30"
             height="30"
-            class="d-inline-block align-top"
+            className="d-inline-block align-top"
             alt=""
           />
           Todo

@@ -32,6 +32,7 @@ function Login() {
         data: userCredentials.user,
       });
       localStorage.setItem("userData", JSON.stringify(userCredentials.user));
+      
     } catch (error) {
       setLoading(false);
       swal(error.message, "", "error");
