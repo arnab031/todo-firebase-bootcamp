@@ -57,7 +57,7 @@ function Dashboard() {
               });
           });
         })
-        .catch((error) => swal(error.message, "Try again later", "error"));
+        .catch((error) => swal(error.message, "Try after sometime", "error"));
     } catch (error) {
       swal(error.message);
     }
